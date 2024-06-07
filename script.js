@@ -29,5 +29,9 @@ const loop = setInterval(() => {
 
 }, 10);
 
-document.addEventListener('keydown', jump);
+document.addEventListener('keydown', function(event) {
+    if (event.key === ' ') {
+        jump();
+    }
+});
 document.addEventListener('touchstart', jump); 
