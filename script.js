@@ -1,5 +1,8 @@
 const mario =  document.querySelector('.mario');
 const pipe =  document.querySelector('.pipe');
+const score =  document.querySelector('.score');
+
+let count = 0;
 
 const jump = () => {
     mario.classList.add('jump');
@@ -25,13 +28,21 @@ const loop = setInterval(() => {
         mario.style.marginLeft = '50px';
 
         clearInterval(loop);
+    } else if (pipePosition < 0 && pipePosition > -5){
+        count++;
+        score.innerHTML = 'Score:' + count;
     }
-
 }, 10);
 
+
+
 document.addEventListener('keydown', function(event) {
+    console.log('key pressed', event.key);
     if (event.key === ' ') {
         jump();
+    } else if (event.key === 'a') {
+        location.reload();
     }
 });
-document.addEventListener('touchstart', jump); 
+
+document.addEventListener('touchstart', jump);
