@@ -1,15 +1,26 @@
 const mario =  document.querySelector('.mario');
 const pipe =  document.querySelector('.pipe');
 const score =  document.querySelector('.score');
+const gameover =  document.querySelector('.gameover');
+const scoreover =  document.querySelector('.score-over');
+const buttonRestart =  document.querySelector('.button-restart');
 
 let count = 0;
+let gameRunning = true;
 
 const jump = () => {
+    if (!gameRunning) return;
     mario.classList.add('jump');
 
     setTimeout(() => {
-    mario.classList.remove('jump');
+        mario.classList.remove('jump');
     }, 500);
+}
+
+const showGameOver = () => {
+    gameRunning = false
+    gameover.style.display = 'block';
+    scoreover.innerHTML = 'score: ' + count;
 }
 
 const loop = setInterval(() => {
@@ -28,6 +39,7 @@ const loop = setInterval(() => {
         mario.style.marginLeft = '50px';
 
         clearInterval(loop);
+        showGameOver();
     } else if (pipePosition < 0 && pipePosition > -5){
         count++;
         score.innerHTML = 'Score:' + count;
@@ -40,9 +52,11 @@ document.addEventListener('keydown', function(event) {
     console.log('key pressed', event.key);
     if (event.key === ' ') {
         jump();
-    } else if (event.key === 'a') {
-        location.reload();
     }
 });
 
 document.addEventListener('touchstart', jump);
+
+buttonRestart.addEventListener('click', () => {
+    location.reload();
+})

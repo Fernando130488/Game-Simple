@@ -12,9 +12,10 @@
     height: 500px;
     border-bottom: 15px solid rgb(35, 160, 35);
     margin: 0 auto;
-    position: relative;
+    position: absolute;
     overflow: hidden;
     background: linear-gradient(#87ceeb, #e0f6ff);
+    z-index: 1;
 }
 
 .pipe {
@@ -55,8 +56,10 @@
 .command-list {
     display: block;
     margin-top: 20px;
-    margin-left: 20px;
+    padding: 20px;
     width: 100%;
+    position: absolute;
+    top: 470px;
 }
 
 .command-title {
@@ -73,6 +76,38 @@
     padding-left: 5px;
     line-height: 1.5;
     font-size: 1.1em;
+}
+
+.gameover {
+    display: none;
+    position: absolute;
+    width: 350px;
+    height: 250px;
+    background-color: gray;
+    z-index: 10;
+    border-radius: 10px;
+    top: 13%;
+    left: 28%;
+    text-align: center;
+    
+}
+
+.gameover-title {
+    font-size: xxx-large;
+    margin-top: 10px;
+}
+
+.score-over {
+    font-size: x-large;
+    display: block;
+    margin-top: 30px;
+}
+
+.button-restart {
+    margin-top: 45px;
+    width: 150px;
+    height: 50px;
+    font-size: x-large;
 }
 
 @keyframes pipe-animation {
